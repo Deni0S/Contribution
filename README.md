@@ -1,64 +1,74 @@
 # Contributions
-Данный инструмент позволяет импортировать и отображать вклад в приватные проекты без копирования самого кода в один проект с макетом вклада, модифицирован под macOS на основе [оригинального](https://github.com/miromannino/Contributions-Importer-For-Github)
-![](https://github.com/Deni0S/Contribution/blob/master/Image.webp)
+This tool allows you to import and display contributions to private projects without copying the actual code into a single project with a contribution mockup. It has been modified for macOS based on the [original](https://github.com/miromannino/Contributions-Importer-For-Github)
 
-## Инструкция по установкам
-### Установить Homebrew
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Image.webp">
+  <source media="(prefers-color-scheme: light)" srcset="Image.webp">
+  <img alt="Process" src="Image.webp">
+</picture>
+
+## Installation Instructions
+### Install Homebrew
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-### Установить Python
+### Install Python
 ```bash
 brew install python
 python3 --version
 pip3 --version
 ```
-### Установить Git
+### ### Install Git
 ```bash
 brew install git
 git --version
 ```
 
-### Установить GitPython
-`# Виртуальное окружение: Создаем Активируем Устанавливаем Проверяем`
+### ### Install GitPython
+`# Virtual environment: Create, Activate, Install, Verify
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install gitpython
-python -c "import git; print('GitPython успешно установлен!')"
+python -c "import git; print('GitPython installed successfully!')"
 ```
-`# После окончания работы Деактивируем окружение и Удаляем папку окружения`
+`# When finished, deactivate the environment and remove the environment folder`
 ```bash
 deactivate
 rm venv
 ```
 
-## Работа с импортом
-1. Установить GitPython через виртуальное окружение
+## Working with the Import
+1. Install GitPython via a virtual environment
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install gitpython
-python -c "import git; print('GitPython успешно установлен!')"
+python -c "import git; print('GitPython installed successfully!')"
 ```
-2. Установить путь на папку содержащую в корне скрипты для импорта `Importer` и скрипт для запуска `RunImport.py`
-3. Прописать пути к папкам приватных проектов где находится git `repo1 = git.Repo("Path/PrivateProject1/.git")` и указать их в массиве `importer = ImporterFromRepository([repo1, repo2], mock_repo)`
-4. Прописать путь где находится пустой  git для сохранения вклада `mock_repo = git.Repo("Path/MockProjects/.git")`
-5. Прописать почты для захвата избранных коммитов `importer.set_author(['work@email.ru', 'personal@email.ru'])`
-6. Запустить скрипт импорта вклада
+2. Set the path to the folder containing the import scripts `Importer` at its root, and the launch script  `RunImport.py`
+3. Specify the paths to the folders of private projects where git is located `repo1 = git.Repo("Path/PrivateProject1/.git")` and list them in the array `importer = ImporterFromRepository([repo1, repo2], mock_repo)`
+4. Specify the path to the empty git repository used to store the contribution `mock_repo = git.Repo("Path/MockProjects/.git")`. If git has not been initialized, run the command
+```bash
+git init
+```
+5. Specify the emails to capture selected commits from `importer.set_author(['work@email.ru', 'personal@email.ru'])`
+6. Run the contribution import script
 ```bash
 python RunImport.py
 ```
-7. Деактивируем виртуальное окружение и Удаляем папку
+7. Deactivate the virtual environment and remove the folder
 ```bash
 deactivate
 rm venv
 ```
 
-## Примечания
-Все команды выполняются в терминале\
-Используйте python3 и pip3 вместо python/pip, чтобы избежать конфликтов со старыми версиями Python\
-Если возникают ошибки прав
+## Notes
+All commands are executed in the terminal.
+Use python3 and pip3 instead of python/pip to avoid conflicts with older Python versions.
+If permission errors occur
 ```bash
 pip3 install --user gitpython
 ```
+
+
